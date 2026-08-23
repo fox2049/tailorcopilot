@@ -11,11 +11,12 @@ function initCopyBibtex() {
     function showCopied() {
       btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
       btn.style.backgroundColor = '#C66000';
+      // tooltip appended to bibtex-box (not inside absolute button) to avoid moving button
+      var box = document.querySelector('.bibtex-box');
       var tip = document.createElement('span');
       tip.textContent = 'Copied to clipboard!';
-      tip.style.cssText = 'position:absolute;top:-32px;right:0;background:#333;color:#fff;padding:4px 8px;border-radius:4px;font-size:12px;white-space:nowrap;opacity:0;transition:opacity 0.2s;';
-      btn.style.position = 'relative';
-      btn.appendChild(tip);
+      tip.style.cssText = 'position:absolute;top:-28px;right:0;background:#333;color:#fff;padding:4px 8px;border-radius:4px;font-size:12px;white-space:nowrap;opacity:0;transition:opacity 0.2s;pointer-events:none;';
+      if (box) box.appendChild(tip);
       requestAnimationFrame(function(){ tip.style.opacity = '1'; });
       setTimeout(function() { btn.innerHTML = origHTML; btn.style.backgroundColor = ''; }, 2000);
       setTimeout(function(){ if(tip.parentNode) tip.remove(); }, 2200);
