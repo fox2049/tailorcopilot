@@ -1,0 +1,237 @@
+/* Global Base */
+:root {
+  --primary-color: #C66000;
+  --primary-hover: #A34E00;
+  --primary-light: #FFF6EE;
+  --text-color: #333333;
+  --text-muted: #666666;
+  --border-color: #EEEEEE;
+  --bg-subtle: #FAFAFA;
+}
+
+body {
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text-color);
+  background-color: #FFFFFF;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, .title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  color: #222222;
+}
+
+/* Hero & Header */
+.hero {
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+}
+
+.publication-title {
+  font-size: 2.3rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25;
+  margin-bottom: 1.5rem !important;
+}
+
+.venue-text {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.publication-authors {
+  margin-bottom: 0.75rem;
+}
+
+.author-block {
+  margin: 0 0.4rem;
+  white-space: nowrap;
+}
+
+.author-block a {
+  color: #333333;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.author-block a:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.affiliation-block {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.affiliation-item {
+  margin: 0 1rem;
+  display: inline-block;
+}
+
+/* Publication Button */
+.publication-links {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.publication-links .button {
+  background-color: var(--primary-color);
+  color: #FFFFFF !important;
+  border: none;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 0.6rem 1.6rem;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(198, 96, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.publication-links .button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(198, 96, 0, 0.35);
+}
+
+/* Sections */
+.section {
+  padding: 2.5rem 1.5rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  position: relative;
+}
+
+.abstract-text {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: #444444;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Video Player */
+.video-container {
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: #000;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Figure / Image Display */
+.figure-block {
+  max-width: 920px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.figure-img-box {
+  background: transparent;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  box-shadow: none !important;
+  outline: none;
+}
+.figure-img-box.no-frame {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent;
+  overflow: hidden;
+}
+.figure-img-box.no-frame img {
+  margin: -1px;
+  width: calc(100% + 2px);
+  max-width: calc(100% + 2px);
+}
+
+.figure-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.figure-caption {
+  font-size: 0.95rem;
+  color: #555555;
+  margin-top: 0.75rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* BibTeX */
+.bibtex-box {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.bibtex-code {
+  background-color: #F8F9FA;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 1.25rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #2D3748;
+  overflow-x: auto;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: #F3F4F6;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Footer */
+.footer {
+  background-color: #FAFAFA;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid #EEEEEE;
+  margin-top: 3rem;
+  color: #777777;
+}
+
+.footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
