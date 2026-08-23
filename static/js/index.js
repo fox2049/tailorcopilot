@@ -62,6 +62,4 @@ jQuery(document).ready(function($) {
     });
   }
   initCopyBibtex();
-  // also keep jQuery binding for compatibility
-  $('#copy-bibtex-btn').off('click.copy').on('click.copy', function(e) { e.preventDefault(); document.getElementById('copy-bibtex-btn').click(); });
 });
