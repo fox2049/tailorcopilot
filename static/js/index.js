@@ -19,33 +19,41 @@ jQuery(document).ready(function($) {
     }
   });
 
-  // Copy BibTeX
-  $('#copy-bibtex-btn').click(function() {
-    var text = $('#bibtex-content').text();
-    var $btn = $('#copy-bibtex-btn');
-    var origHTML = $btn.html();
-    function showCopied() {
-      $btn.html('<i class=\"fas fa-check\"></i> Copied!');
-      $btn.css('background-color', '#C66000');
-      setTimeout(function() {
-        $btn.html(origHTML);
-        $btn.css('background-color', '');
-      }, 2000);
-    }
-    function fallbackCopy(t) {
-      var ta = document.createElement('textarea');
-      ta.value = t;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); showCopied(); } catch(e) { alert('Copy failed, please select manually.'); }
-      document.body.removeChild(ta);
-    }
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(showCopied).catch(function(){ fallbackCopy(text); });
-    } else {
-      fallbackCopy(text);
-    }
-  });
+  // Copy BibTeX - robust with jQuery + vanilla fallback
+  function initCopyBibtex() {
+    var btn = document.getElementById('copy-bibtex-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var el = document.getElementById('bibtex-content');
+      var text = el ? (el.textContent || el.innerText) : '';
+      var origHTML = btn.innerHTML;
+      function showCopied() {
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        btn.style.backgroundColor = '#C66000';
+        setTimeout(function() { btn.innerHTML = origHTML; btn.style.backgroundColor = ''; }, 2000);
+      }
+      function fallbackCopy(t) {
+        var ta = document.createElement('textarea');
+        ta.value = t;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, 99999);
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
+        document.body.removeChild(ta);
+        if (ok) showCopied(); else { window.prompt('Copy BibTeX manually (Ctrl+C):', t); }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied).catch(function(){ fallbackCopy(text); });
+      } else {
+        fallbackCopy(text);
+      }
+    });
+  }
+  initCopyBibtex();
+  // also keep jQuery binding for compatibility
+  $('#copy-bibtex-btn').off('click.copy').on('click.copy', function(e) { e.preventDefault(); document.getElementById('copy-bibtex-btn').click(); });
 });
