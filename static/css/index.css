@@ -94,7 +94,7 @@ h1, h2, h3, h4, .title {
   border-radius: 9999px;
   padding: 0.6rem 1.6rem;
   font-size: 1.05rem;
-  min-width: 10rem;
+  min-width: 13rem;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(198, 96, 0, 0.25);
   transition: all 0.2s ease;
